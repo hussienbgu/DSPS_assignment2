@@ -1,0 +1,43 @@
+The number of key-value pairs that were sent from the mappers to the reducers in your mapreduce runs, and their size (take a look at the log file of Hadoop),
+with and without local aggregation
+
+Step 0 :
+
+  * without local aggregation
+    **  Number Of KEYS:118653455
+    **  Size Of KEYS: 3235880957
+
+  * With local aggregation
+    **  Number Of KEYS:26821222
+    **  Size Of KEYS:369140314
+
+Step 1 :
+
+  * without local aggregation
+    **  Number Of KEYS:53642410
+    **  Size Of KEYS:1335979177
+  * With local aggregation
+    **  Number Of KEYS: 31332328
+    **  Size Of KEYS: 387985775
+
+
+Step 2 :
+
+  * without local aggregation
+    **  Number Of KEYS:53642410
+    **  Size Of KEYS:1471526928
+
+  * With local aggregation
+    **  Number Of KEYS:32049402
+    **  Size Of KEYS:480894539
+
+
+Step 3 :
+
+  * without local aggregation
+        **  Number Of KEYS:4064128
+        **  Size Of KEYS:185965660
+  * With local aggregation
+        ** Number Of KEYS:4064128
+        ** Size Of KEYS:110634826
+

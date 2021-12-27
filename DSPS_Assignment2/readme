@@ -1,0 +1,70 @@
+
+Made by:
+
+1. Hussein Alshqerat 319063160
+2. Afnan Basher 208860338
+
+Full outputs can be found at:
+https://s3.console.aws.amazon.com/s3/buckets/hussiendsps2?region=us-east-1&tab=objects
+
+Steps and information:
+We divided the program into 4 steps of M-R applications:
+
+Step 0: Input reading and summing of K-V's.
+    ** The mapper creates the K-V pairs in the format of:
+        <Key,Value>  = <decade w1 w2,count>
+        (decade = (year/10) * 10)
+
+    ** The reducer sums K-v1, v2, ... and generates a unique K-V pair in the format of:
+        <Key,Value> = <decade w1 w2,c(w1w2)>
+
+Step 1:
+
+    ** the mapper gets k-v pairs from the output of step 0
+       in this format : <Key,Value> = <decade w1 w2,c(w1w2)>
+       and the output would be two kinds of pairs :
+            1 ->  <decade w1 * , c(w1w2) >
+            2 ->  <decade w1 ** , w2 c(w1w2) >
+       and we increment the N and save it.
+    ** the reducer summing the number of times w1 appears firs in the bigram
+       the output like this :
+        <key,value> = < decade w1 w1 c(w1w2) , c(w1)>
+
+Step 2:
+      ** the mapper
+            input = < decade w1 w1 c(w1w2) , c(w1)>
+            output :
+                1 ->  <decade w2 * , c(w1w2) >
+                2 ->  <decade w2 ** , w1 c(w1w2) c(w1)>
+
+     ** the reducer : ** CALCULATE THE PMI AND NPMI **
+
+            output = <key ,value > = <decade w1 w2 ,NPMI>
+
+
+Step 3: we sort the collactions in the same decade by the npmi value
+      ** the mapper
+                  input = <key ,value > = <decade w1 w2 ,NPMI>
+                  output= <key ,value > = <decade NPMI , w1 w2 >
+
+      ** the reducer
+        output= <key ,value > = <decade NPMI , w1 w2 >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
